@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thoughts Idea</title>
+    <link rel="icon" href="../images/LOGO.jpg">
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+    <h1>Sign Up</h1>
+    <form id="signupForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <button type="submit">Sign Up</button>
+    </form>
+
+    <h1>Sign In</h1>
+    <form id="signinForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <button type="submit">Sign In</button>
+    </form>
+
+    <script>
+        // Sign up form
+        var signupForm = document.getElementById('signupForm');
+        signupForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var username = document.getElementById('signupForm').elements['username'].value;
+            var password = document.getElementById('signupForm').elements['password'].value;
+
+            var users = JSON.parse(localStorage.getItem('users')) || {};
+
+            if (users[username]) {
+                alert('Username already exists. Please choose a different username.');
+                return;
+            }
+
+            users[username] = password;
+
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Sign up successful!');
+            signupForm.reset();
+        });
+
+        // Sign in form
+        var signinForm = document.getElementById('signinForm');
+        signinForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var username = document.getElementById('signinForm').elements['username'].value;
+            var password = document.getElementById('signinForm').elements['password'].value;
+
+            var users = JSON.parse(localStorage.getItem('users'));
+
+            if (users && users[username] === password) {
+                alert('Sign in successful!');
+                signinForm.reset();
+            } else {
+                alert('Invalid username or password.');
+            }
+        });
+    </script>
+</body>
+</html>

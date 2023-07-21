@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function sendTelegramMessage() {
+          const telegramAPI = 'https://api.telegram.org/bot6123810495:AAFRm6x3dgr63kPveAii-3sE4-Gvu4fkPd0/sendMessage';
+      
+          const chatID = '1417073754';
+      
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const message = document.getElementById('message').value;
+      
+          // Message to be sent to Telegram
+          const telegramMessage = `New form submission:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+      
+          // Send the message to Telegram using Fetch API
+          fetch(telegramAPI, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              chat_id: chatID,
+              text: telegramMessage,
+            }),
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              alert('Form submission successful! Thank you.');
+            })
+            .catch(error => {
+              alert('Form submission failed. Please try again later.');
+              console.error('Error:', error);
+            });
+        }
+      </script>
+      
+</head>
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+      
+        <button type="button" onclick="sendTelegramMessage()">Submit</button>
+      </form>
+      
+</body>
+</html>
