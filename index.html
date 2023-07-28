@@ -30,9 +30,9 @@
 
 <body>
 
-    <div id="loader">
+    <!-- <div id="loader">
         <img src="lib/owlcarousel/assets/ajax-loader.gif" alt="Loading...">
-    </div>
+    </div> -->
     <header class="header">
         <a href="#" class="logo"><img src="./images/LOGO.jpg" loading="lazy" alt="LOGO"></a>
         <div class="fas fa-bars"></div>
@@ -72,9 +72,11 @@
                 <h3>Your Trusted Project Partner.</h3>
                 <p>We are a project center that specializes in providing custom projects for students across all
                     departments,<br> tailored to their specific requirements and academic needs.</p>
+                    <h3><a href="formChat.html" target="_blank"><button class="button">Connect</button></a></h3>
             </div>
         </div>
     </section>
+   
     <div class="pt-5 pb-5" style="background-color: #f2f2f2;">
         <div class="container">
             <div class="row">
@@ -142,62 +144,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        function sendTelegramMessage() {
-          const telegramAPI = 'https://api.telegram.org/bot6123810495:AAFRm6x3dgr63kPveAii-3sE4-Gvu4fkPd0/sendMessage';
-      
-          const chatID = '-1001968463839';
-      
-          const name = document.getElementById('name').value;
-          const email = document.getElementById('email').value;
-          const phone = document.getElementById('phone').value;
-          const proTitle = document.getElementById('proTitle').value;
-          const proDesc = document.getElementById('proDesc').value;
-          const dept = document.getElementById('dept').value;
-      
-          // Message to be sent to Telegram
-          const telegramMessage = `New Project Enquiry:\nName: ${name}\nEmail: ${email}\nDepartment: ${dept}\nProject Title: ${proTitle}\nProject Description: ${proDesc}`;
-      
-          // Send the message to Telegram using Fetch API
-          fetch(telegramAPI, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              chat_id: chatID,
-              text: telegramMessage,
-            }),
-          })
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              alert('Form submission successful! Thank you.');
-            })
-            .catch(error => {
-              alert('Form submission failed. Please try again later.');
-              console.error('Error:', error);
-            });
-        }
-      </script>
-    <div class="formC">
-        <form>
-            <!-- <label for="name"> Name</label> -->
-            <input type="text" id="name" name="Name" required placeholder="Name">
-            <!-- <label for="email"> Email</label> -->
-            <input type="email" id="email" name="Email" required placeholder="Email">
-            <!-- <label for="dept"> Department</label> -->
-            <input type="text" id="dept" name="Department" placeholder="Department" required>
-            <!-- <label for="phone"> Phone Number</label> -->
-            <input type="tel" id="phone" name="Phone" placeholder="Phone Number" required>
-            <!-- <label for="title">Project Title</label> -->
-            <input type="text" id="proTitle" name="Title" placeholder="Project Title" required>
-            <!-- <label for="desc">Project Description</label> -->
-            <input type="text" id="proDesc" name="desc" placeholder="Project Description" required>
-            <button class="button" type="button" onclick="sendTelegramMessage()">Submit</button>
-        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -396,7 +342,7 @@
     <section class="team" style="margin-top: 7rem;">
         <h1 class="heading" style="margin-top: -1.5rem;" id="team">our team</h1>
         <p></p>
-        
+
         <div class="row">
             <div class="col-lg-2 col-md-6 footer-links"></div>
 

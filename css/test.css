@@ -15,7 +15,7 @@ html {
 }
 
 body {
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 .heading,
@@ -1064,7 +1064,7 @@ body {
     font-size: 44px;
     right: 15px;
     bottom: 15px;
-    transition:  0.3s;
+    transition: 0.3s;
     z-index: 9;
 }
 
@@ -1146,24 +1146,31 @@ body {
 
 .button {
     padding: 1em 0.7em;
-    border: none;
-    border-radius: 20%;
+    border: 3px solid black;
+    border-radius: 30px;
     font-weight: bold;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #2c9caf;
+    color: blue;
+    text-shadow: 2px 2px 2px black;
     transition: all 1000ms;
     font-size: 15px;
     position: relative;
     overflow: hidden;
-    outline: 2px solid #2c9caf;
+    outline: 2px solid #edf2f3;
+    background-color: burlywood;
 }
 
 button:hover {
-    color: #ffffff;
-    transform: scale(1.1);
+    padding: 1em 0.9em;
+    background-color: burlywood;
     outline: 2px solid #c2f7ff;
+    border: 3px solid brown;
     box-shadow: 4px 5px 17px -4px #c2f7ff;
+    text-shadow: 3px 3px 4px  greenyellow;
+    animation: changeColorB 2s infinite;
+    color: blue;
+    text-shadow: 2px 2px 2px black;
 }
 
 button::before {
@@ -1179,9 +1186,9 @@ button::before {
     transition: width 1000ms;
 }
 
-button:hover::before {
-    width: 250%;
-}
+
+
+
 
 @media (max-width: 1200px) {
     .faq {
@@ -1469,15 +1476,15 @@ button:hover::before {
 .search-container {
     display: flex;
     align-items: center;
-  }
-  
-  .search-container input[type="text"] {
+}
+
+.search-container input[type="text"] {
     padding: 6px 10px;
     border: none;
     border-radius: 4px;
-  }
-  
-  .search-container button {
+}
+
+.search-container button {
     display: flex;
     align-items: center;
     margin-left: 10px;
@@ -1486,9 +1493,9 @@ button:hover::before {
     border-radius: 4px;
     background-color: #4CAF50;
     color: white;
-  }
-  
-  #loader {
+}
+
+#loader {
     position: fixed;
     top: 0;
     left: 0;
@@ -1499,13 +1506,15 @@ button:hover::before {
     justify-content: center;
     align-items: center;
     z-index: 9999;
-  }
-  
-  #loader img {
-    width: auto; /* Adjust the width as needed */
-    
-  }
+}
 
+#loader img {
+    width: auto;
+    /* Adjust the width as needed */
+
+}
+
+/* 
 .formC{
     width: auto;
     height: auto;
@@ -1540,5 +1549,59 @@ input:hover{
     border-radius: 35px;
     padding: 7px 30px;
     background-color: rgb(153, 212, 216);
+} */
+
+
+#butt {
+    height: auto;
+    width: auto;
+    padding: 4px 34px;
+    color: white;
+    animation: changeColorB 20s infinite;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: capitalize;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
+@keyframes changeColorB {
+    0% {
+        background-color: rgb(255, 0, 0);
+    }
+
+    20% {
+        background-color: rgb(182, 255, 123);
+    }
+
+    40% {
+        background-color: rgb(0, 255, 242);
+    }
+
+    60% {
+        background-color: rgb(100, 233, 200);
+    }
+
+    80% {
+        background-color: rgb(182, 255, 123);
+    }
+
+    100% {
+        background-color: rgb(255, 0, 0);
+    }
+}
+
+#butt:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+#butt:active {
+    transform: scale(0.95);
+}
+
+a{
+    text-decoration: none;
+}
