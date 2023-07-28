@@ -1,83 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thoughts Idea Form</title>
     <link rel="stylesheet" href="./css/form.css">
-<script src="./js/form.js"></script>
+    <!-- <script src="./js/form.js"></script> -->
 </head>
+
 <body>
     <div class="container">
-  <form>
-    <div class="row">
-      <div class="col-25">
-        <label for="name">Name</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="fname" name="firstname" placeholder="Your Name" required>
-      </div>
+        <form>
+            <div class="row">
+                <div class="col-25">
+                    <label for="name">Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="name" name="firstname" placeholder="Your Name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="dept">Department</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="dept" name="dept" placeholder="Enter your Department Name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="teamSize">Team Size</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="teamSize" name="teamSize" placeholder="Team Size in Numbers" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="email">Mail ID</label>
+                </div>
+                <div class="col-75">
+                    <input type="email" id="email" name="email" placeholder="Enter your Mail ID" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="phone">Phone Number</label>
+                </div>
+                <div class="col-75">
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your Phone number" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="proTitle">Project Title</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="proTitle" name="proTitle" placeholder="enter your project title" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="proLink">Project Link</label>
+                </div>
+                <div class="col-75">
+                    <input type="url" id="proLink" name="proLink" placeholder="provide us your project link" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="proDesc">Description</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="proDesc" name="proDesc" placeholder="Tell us About your Project! and describe your needs..."
+                        style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn" onclick="sendTelegramMessage()">Submit</button>
+            </div>
+        </form>
     </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="dept">Department</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="dept" name="dept" placeholder="Enter your Department Name" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="teamSize">Team Size</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="teamSize" name="teamSize" placeholder="Team Size in Numbers" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="email">Mail ID</label>
-      </div>
-      <div class="col-75">
-        <input type="email" id="email" name="email" placeholder="Enter your Mail ID" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="phone">Phone Number</label>
-      </div>
-      <div class="col-75">
-        <input type="tel" id="phone" name="phone" placeholder="Enter your Phone number" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="proTitle">Project Title</label>
-      </div>
-      <div class="col-75">
-        <input type="url" id="proTitle" name="proTitle" placeholder="enter your project title" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="proLink">Project Link</label>
-      </div>
-      <div class="col-75">
-        <input type="url" id="proLink" name="proLink" placeholder="provide us your project link" required>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="desc">Description</label>
-      </div>
-      <div class="col-75">
-        <textarea id="desc" name="desc" placeholder="Tell us About your Project! and describe your needs..." style="height:200px"></textarea>
-      </div>
-    </div>
-    <div class="row">
-      <button type="submit" class="btn">Submit</button>
-    </div>
-  </form>
-</div>
+    <script>
+        
+function sendTelegramMessage() {
+  const telegramAPI = 'https://api.telegram.org/bot6123810495:AAFRm6x3dgr63kPveAii-3sE4-Gvu4fkPd0/sendMessage';
+
+  const chatID = '-1001968463839';
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const proTitle = document.getElementById('proTitle').value;
+  const proDesc = document.getElementById('proDesc').value;
+  const dept = document.getElementById('dept').value;
+  const teamSize = document.getElementById('teamSize').value;
+  const link = document.getElementById('proLink').value;
+
+  // Message to be sent to Telegram
+  const telegramMessage = `New Project Enquiry:\nName: ${name}\nEmail: ${email}\nDepartment: ${dept}\nTeam Size: ${teamSize}\nProject Title: ${proTitle}\nProject Description: ${proDesc}\nProject Link: ${proLink}`;
+
+  // Send the message to Telegram using Fetch API
+  fetch(telegramAPI, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      chat_id: chatID,
+      text: telegramMessage,
+    }),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      alert('Form submission successful! Thank you.');
+    })
+    .catch(error => {
+      alert('Form submission failed. Please try again later.');
+      console.error('Error:', error);
+    });
+}
+    </script>
 </body>
+
 </html>
