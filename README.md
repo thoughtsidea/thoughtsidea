@@ -1,1 +1,1 @@
-"# thoughtsidea" 
+"# ThoughtsIdea TechSolutions" 

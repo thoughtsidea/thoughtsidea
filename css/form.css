@@ -93,3 +93,9 @@
       color: white;
       background: #002e5f;
   }
+  @media screen and (max-width: 300px) {
+
+    .btn {
+        width: 100%;
+    }
+}
